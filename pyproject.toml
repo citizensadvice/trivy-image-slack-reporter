@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "trivy-image-slack-reporter"
+version = "0.1.0"
+description = "Send a message to Slack with the contents of a Trivy image scan."
+authors = ["Matthew Cane <matthew.cane@citizensadvice.org.uk>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+slack-sdk = "^3.33.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
