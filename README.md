@@ -38,11 +38,11 @@ The Trivy scan can be done without restrictions on the severity of the vulnerabi
     ignore-unfixed: true
     scanners: vuln
 
-- name: Format results
+- name: Send Results To Slack
   env:
     RESULTS_FILE: trivy-results.json
     IMAGE_TITLE: My Application Image
     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
     SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
-  run: python .github/resources/format_trivy_scan.py
+  run: python trivy-image-slack-reporter
 ```
