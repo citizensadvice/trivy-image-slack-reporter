@@ -1,0 +1,230 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2024-12-16T14:17:48.022364Z",
+  "ArtifactName": "979633842206.dkr.ecr.eu-west-1.amazonaws.com/adviser-references-api",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.20.3"
+    },
+    "ImageID": "sha256:1aa9f50de9425614a4ab3442e0ebb17a155c02c275db2a6ff463e6a8c6eaf58b",
+    "DiffIDs": [
+      "sha256:75654b8eeebd3beae97271a102f57cdeb794cc91e442648544963a7e951e9558",
+      "sha256:5ef2dc91ebb3a4708e4ed99042d831bb2da57cb57abb6d5796e53cf5c3b35608",
+      "sha256:a05b0efaf40d31e880ee7bb03a6b9522da9dc9dfa47e4dd701fad3d4cb7a951f",
+      "sha256:a19ea52cb0081d9c85c71cf9d6096ac3fd5bd07655932dad5b0afb8d095dfc65",
+      "sha256:80514a2f961eeef040c7f0908860cc765cf11924e6f629bb37152620ff357934",
+      "sha256:a12ef0b3e37eecbb6c8b44b77339cec29200e4128367ce888daf162235484c0d",
+      "sha256:cf8656c1ebe046b010775a848852d0e21e18550e1b713685f36d293cf9259875",
+      "sha256:b517eb012d0227dc66cde666384137e94783ae46490e8f16db4118f138bac0ff",
+      "sha256:79177050d5f37e52977d30dfaa088fd25a69eba62d71a7f5a664b389126fcc11",
+      "sha256:3f167f5f1c0f4e68cbd2f969e71045fae0e18889836871e4536c1ce068f029d9",
+      "sha256:c12a7d5d656c2fe9ad16eee9330c3bc1e8afc05955351ba7895153f8d3299752",
+      "sha256:bfbac761ac3ce2c1495a5a963cf48a175eea9fbddfc90e72e2f1f9139d0e38b7",
+      "sha256:9e8a9bd7f176954ea82524ef17e13fd8e8a6e806a30affc75b03289a1a4ad254"
+    ],
+    "RepoTags": [
+      "979633842206.dkr.ecr.eu-west-1.amazonaws.com/adviser-references-api:latest"
+    ],
+    "RepoDigests": [
+      "979633842206.dkr.ecr.eu-west-1.amazonaws.com/adviser-references-api@sha256:fa56f05a0f4b2fcb1f722959c92dbeec0db67b819c177e0c010ef4a29ed924ff"
+    ],
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2024-12-11T13:01:45.253010013Z",
+      "history": [
+        {
+          "created": "2024-09-06T12:05:36Z",
+          "created_by": "ADD alpine-minirootfs-3.20.3-x86_64.tar.gz / # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-09-06T12:05:36Z",
+          "created_by": "CMD [\"/bin/sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "RUN /bin/sh -c set -eux; \tapk add --no-cache \t\tbzip2 \t\tca-certificates \t\tgmp-dev \t\tlibffi-dev \t\tprocps \t\tyaml-dev \t\tzlib-dev \t; # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "RUN /bin/sh -c set -eux; \tmkdir -p /usr/local/etc; \t{ \t\techo 'install: --no-document'; \t\techo 'update: --no-document'; \t} \u003e\u003e /usr/local/etc/gemrc # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "ENV LANG=C.UTF-8",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "ENV RUBY_VERSION=3.3.6",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "ENV RUBY_DOWNLOAD_URL=https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.6.tar.xz",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "ENV RUBY_DOWNLOAD_SHA256=540975969d1af42190d26ff629bc93b1c3f4bffff4ab253e245e125085e66266",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "RUN /bin/sh -c set -eux; \t\tapk add --no-cache --virtual .ruby-builddeps \t\tautoconf \t\tbzip2 \t\tbzip2-dev \t\tca-certificates \t\tcoreutils \t\tdpkg-dev dpkg \t\tg++ \t\tgcc \t\tgdbm-dev \t\tglib-dev \t\tlibc-dev \t\tlibffi-dev \t\tlibxml2-dev \t\tlibxslt-dev \t\tlinux-headers \t\tmake \t\tncurses-dev \t\topenssl \t\topenssl-dev \t\tpatch \t\tprocps \t\truby \t\ttar \t\txz \t\tyaml-dev \t\tzlib-dev \t; \t\trustArch=; \tapkArch=\"$(apk --print-arch)\"; \tcase \"$apkArch\" in \t\t'x86_64') rustArch='x86_64-unknown-linux-musl'; rustupUrl='https://static.rust-lang.org/rustup/archive/1.26.0/x86_64-unknown-linux-musl/rustup-init'; rustupSha256='7aa9e2a380a9958fc1fc426a3323209b2c86181c6816640979580f62ff7d48d4' ;; \t\t'aarch64') rustArch='aarch64-unknown-linux-musl'; rustupUrl='https://static.rust-lang.org/rustup/archive/1.26.0/aarch64-unknown-linux-musl/rustup-init'; rustupSha256='b1962dfc18e1fd47d01341e6897cace67cddfabf547ef394e8883939bd6e002e' ;; \tesac; \t\tif [ -n \"$rustArch\" ]; then \t\tmkdir -p /tmp/rust; \t\t\t\twget -O /tmp/rust/rustup-init \"$rustupUrl\"; \t\techo \"$rustupSha256 */tmp/rust/rustup-init\" | sha256sum --check --strict; \t\tchmod +x /tmp/rust/rustup-init; \t\t\t\texport RUSTUP_HOME='/tmp/rust/rustup' CARGO_HOME='/tmp/rust/cargo'; \t\texport PATH=\"$CARGO_HOME/bin:$PATH\"; \t\t/tmp/rust/rustup-init -y --no-modify-path --profile minimal --default-toolchain '1.74.1' --default-host \"$rustArch\"; \t\t\t\trustc --version; \t\tcargo --version; \tfi; \t\twget -O ruby.tar.xz \"$RUBY_DOWNLOAD_URL\"; \techo \"$RUBY_DOWNLOAD_SHA256 *ruby.tar.xz\" | sha256sum --check --strict; \t\tmkdir -p /usr/src/ruby; \ttar -xJf ruby.tar.xz -C /usr/src/ruby --strip-components=1; \trm ruby.tar.xz; \t\tcd /usr/src/ruby; \t\twget -O 'thread-stack-fix.patch' 'https://bugs.ruby-lang.org/attachments/download/7081/0001-thread_pthread.c-make-get_main_stack-portable-on-lin.patch'; \techo '3ab628a51d92fdf0d2b5835e93564857aea73e0c1de00313864a94a6255cb645 *thread-stack-fix.patch' | sha256sum --check --strict; \tpatch -p1 -i thread-stack-fix.patch; \trm thread-stack-fix.patch; \t\t{ \t\techo '#define ENABLE_PATH_CHECK 0'; \t\techo; \t\tcat file.c; \t} \u003e file.c.new; \tmv file.c.new file.c; \t\tautoconf; \tgnuArch=\"$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)\"; \t./configure \t\t--build=\"$gnuArch\" \t\t--disable-install-doc \t\t--enable-shared \t\t${rustArch:+--enable-yjit} \t; \tmake -j \"$(nproc)\"; \tmake install; \t\trm -rf /tmp/rust; \trunDeps=\"$( \t\tscanelf --needed --nobanner --format '%n#p' --recursive /usr/local \t\t\t| tr ',' '\\n' \t\t\t| sort -u \t\t\t| awk 'system(\"[ -e /usr/local/lib/\" $1 \" ]\") == 0 { next } { print \"so:\" $1 }' \t)\"; \tapk add --no-network --virtual .ruby-rundeps $runDeps; \tapk del --no-network .ruby-builddeps; \t\tcd /; \trm -r /usr/src/ruby; \tif \t\tapk --no-network list --installed \t\t\t| grep -v '^[.]ruby-rundeps' \t\t\t| grep -i ruby \t; then \t\texit 1; \tfi; \t[ \"$(command -v ruby)\" = '/usr/local/bin/ruby' ]; \truby --version; \tgem --version; \tbundle --version # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "ENV GEM_HOME=/usr/local/bundle",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "ENV BUNDLE_SILENCE_ROOT_WARNING=1 BUNDLE_APP_CONFIG=/usr/local/bundle",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "ENV PATH=/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "RUN /bin/sh -c set -eux; \tmkdir \"$GEM_HOME\"; \tchmod 1777 \"$GEM_HOME\" # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-05T22:25:32Z",
+          "created_by": "CMD [\"irb\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-09T07:47:38.877491076Z",
+          "created_by": "RUN /bin/sh -c gem install bundler -v '~\u003e2.3' \u0026\u0026     bundle config --global frozen 1 \u0026\u0026     apk add --no-cache coreutils bash tzdata postgresql-libs postgresql14-client gcompat \u0026\u0026     truncate -s 0 /var/log/*log # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-09T07:47:38.922532336Z",
+          "created_by": "WORKDIR /app",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-11T11:13:48.680846773Z",
+          "created_by": "COPY Gemfile Gemfile.lock ./ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-11T11:14:44.24521415Z",
+          "created_by": "RUN /bin/sh -c apk add --no-cache --virtual .gem-installdeps build-base git postgresql-dev \u0026\u0026       bundle install -j6 \u0026\u0026       rm -rf $GEM_HOME/cache \u0026\u0026       apk del .gem-installdeps # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-11T13:01:44.969505403Z",
+          "created_by": "COPY ./ /app # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-11T13:01:45.065875903Z",
+          "created_by": "RUN /bin/sh -c addgroup ruby # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-11T13:01:45.164398834Z",
+          "created_by": "RUN /bin/sh -c adduser -h /home/ruby -D 3000 ruby # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-11T13:01:45.253010013Z",
+          "created_by": "RUN /bin/sh -c rm -rf /app/tmp /app/log \u0026\u0026 mkdir /app/tmp /app/log \u0026\u0026 chmod -R 777 /app/tmp /app/log # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2024-12-11T13:01:45.253010013Z",
+          "created_by": "USER 3000",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2024-12-11T13:01:45.253010013Z",
+          "created_by": "CMD [\"bundle\" \"exec\" \"rails\" \"server\" \"-b\" \"0.0.0.0\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:75654b8eeebd3beae97271a102f57cdeb794cc91e442648544963a7e951e9558",
+          "sha256:5ef2dc91ebb3a4708e4ed99042d831bb2da57cb57abb6d5796e53cf5c3b35608",
+          "sha256:a05b0efaf40d31e880ee7bb03a6b9522da9dc9dfa47e4dd701fad3d4cb7a951f",
+          "sha256:a19ea52cb0081d9c85c71cf9d6096ac3fd5bd07655932dad5b0afb8d095dfc65",
+          "sha256:80514a2f961eeef040c7f0908860cc765cf11924e6f629bb37152620ff357934",
+          "sha256:a12ef0b3e37eecbb6c8b44b77339cec29200e4128367ce888daf162235484c0d",
+          "sha256:cf8656c1ebe046b010775a848852d0e21e18550e1b713685f36d293cf9259875",
+          "sha256:b517eb012d0227dc66cde666384137e94783ae46490e8f16db4118f138bac0ff",
+          "sha256:79177050d5f37e52977d30dfaa088fd25a69eba62d71a7f5a664b389126fcc11",
+          "sha256:3f167f5f1c0f4e68cbd2f969e71045fae0e18889836871e4536c1ce068f029d9",
+          "sha256:c12a7d5d656c2fe9ad16eee9330c3bc1e8afc05955351ba7895153f8d3299752",
+          "sha256:bfbac761ac3ce2c1495a5a963cf48a175eea9fbddfc90e72e2f1f9139d0e38b7",
+          "sha256:9e8a9bd7f176954ea82524ef17e13fd8e8a6e806a30affc75b03289a1a4ad254"
+        ]
+      },
+      "config": {
+        "Cmd": [
+          "bundle",
+          "exec",
+          "rails",
+          "server",
+          "-b",
+          "0.0.0.0"
+        ],
+        "Env": [
+          "PATH=/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "LANG=C.UTF-8",
+          "RUBY_VERSION=3.3.6",
+          "RUBY_DOWNLOAD_URL=https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.6.tar.xz",
+          "RUBY_DOWNLOAD_SHA256=540975969d1af42190d26ff629bc93b1c3f4bffff4ab253e245e125085e66266",
+          "GEM_HOME=/usr/local/bundle",
+          "BUNDLE_SILENCE_ROOT_WARNING=1",
+          "BUNDLE_APP_CONFIG=/usr/local/bundle"
+        ],
+        "User": "3000",
+        "WorkingDir": "/app",
+        "ArgsEscaped": true
+      }
+    }
+  },
+  "Results": [
+    {
+      "Target": "979633842206.dkr.ecr.eu-west-1.amazonaws.com/adviser-references-api (alpine 3.20.3)",
+      "Class": "os-pkgs",
+      "Type": "alpine"
+    },
+    {
+      "Target": "Node.js",
+      "Class": "lang-pkgs",
+      "Type": "node-pkg"
+    },
+    {
+      "Target": "Ruby",
+      "Class": "lang-pkgs",
+      "Type": "gemspec"
+    }
+  ]
+}

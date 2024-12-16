@@ -8,22 +8,28 @@ If supplied with a GitHub Actions artifact URL, the script will add the link to 
 
 The Trivy scan can be done without restrictions on the severity of the vulnerabilities found, as the script can filter the results based on the severity level after the scan is complete.
 
+If there are no vulnerabilities found, the script will not send a message to Slack.
+
 ## Example Slack message
 
 ![Example Slack message](examples/example.png)
 
 ## Required Environment Variables
 
-- RESULTS_FILE: Path to the Trivy scan JSON file
-- IMAGE_TITLE: Title of the image being scanned. This does not need to be the full
-  name of the image, just a human-readable identifier
-- SLACK_BOT_TOKEN: Slack bot token with permission to send messages to the channel
-- SLACK_CHANNEL_ID: ID of the Slack channel to send the message to
+| Variable         | Description                                                                                                             |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| RESULTS_FILE     | Path to the Trivy scan JSON file                                                                                        |
+| IMAGE_TITLE      | Title of the image being scanned. This does not need to be the full name of the image, just a human-readable identifier |
+| SLACK_BOT_TOKEN  | Slack bot token with permission to send messages to the channel                                                         |
+| SLACK_CHANNEL_ID | ID of the Slack channel to send the message to                                                                          |
 
 ## Optional Environment Variables
 
-- SEVERITY: Comma-separated list of severity levels to include in the scan results. Defaults to `HIGH,CRITICAL`.
-- ARTIFACT_URL: URL to the Trivy scan GitHub Actions artifact
+| Variable     | Description                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------- |
+| SEVERITY     | Comma-separated list of severity levels to include in the scan results. Defaults to `HIGH,CRITICAL`           |
+| ARTIFACT_URL | URL to the Trivy scan GitHub Actions artifact                                                                 |
+| DRY_RUN      | If set, the script will not send the message to Slack, but will still print the message blocks to the console |
 
 ## Example Usage In A GitHub Actions Workflow
 

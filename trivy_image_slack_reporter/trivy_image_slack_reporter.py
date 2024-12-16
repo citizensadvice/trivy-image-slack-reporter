@@ -125,21 +125,27 @@ def main():
                     + f"*The vulnerabilities in this section are truncated. {'See the full scan result for more details.' if ARTIFACT_URL else ''}*"
                 )
 
-    print(f"Sending results to channel {SLACK_CHANNEL_ID}:")
+    print("Message blocks:")
     print(json.dumps(blocks, indent=2))
 
-    client = slack_sdk.WebClient(token=SLACK_BOT_TOKEN)
+    if len(blocks) <= 5:
+        print("No vulnerabilities found. Skipping sending Slack message.")
+    elif os.environ.get("DRY_RUN"):
+        print("Dry run enabled. Skipping sending Slack message.")
+    else:
+        print(f"Sending results to channel {SLACK_CHANNEL_ID}...")
 
-    try:
-        client.chat_postMessage(
-            channel=SLACK_CHANNEL_ID,
-            text=TITLE,
-            blocks=blocks,
-            unfurl_links=False,
-            unfurl_media=False,
-        )
-    except Exception as e:
-        raise Exception(f"Error sending results to Slack: {e}")
+        try:
+            client = slack_sdk.WebClient(token=SLACK_BOT_TOKEN)
+            client.chat_postMessage(
+                channel=SLACK_CHANNEL_ID,
+                text=TITLE,
+                blocks=blocks,
+                unfurl_links=False,
+                unfurl_media=False,
+            )
+        except Exception as e:
+            raise Exception(f"Error sending results to Slack: {e}")
 
     print("Done.")
 
