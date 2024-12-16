@@ -111,7 +111,7 @@ def main():
     # Truncate sections that are too long
     for block in blocks:
         if block["type"] == "section":
-            if len(block["text"]["text"]) > 3000:
+            if len(block["text"]["text"]) >= 3000:
                 # Split the text into individual vulnerabilities
                 items: list[str] = block["text"]["text"].split("• ")
 
