@@ -2,9 +2,6 @@ version: 2
 updates:
   - package-ecosystem: 'pip'
     directory: '/infrastructure/cdk/'
-    reviewers:
-      - 'citizensadvice/devops'
-      - 'MatthewCane'
     schedule:
       interval: 'weekly'
       day: 'monday'
