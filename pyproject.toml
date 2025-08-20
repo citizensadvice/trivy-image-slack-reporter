@@ -1,6 +1,6 @@
 [project]
 name = "trivy-image-slack-reporter"
-version = "1.0.0"
+version = "2.1.0"
 description = "Send a message to Slack with the contents of a Trivy image scan."
 readme = "README.md"
 requires-python = ">=3.10"
