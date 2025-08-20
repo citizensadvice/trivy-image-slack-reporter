@@ -51,7 +51,7 @@ def main():
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": f"This scan shows {', '.join(SEVERITY)} severity vulnerabilities found in the following image:\n\n`{ results['Metadata']['RepoDigests'][0] }`\n",
+                "text": f"This scan shows {', '.join(SEVERITY)} severity vulnerabilities found in the following image:\n\n`{results['Metadata']['RepoDigests'][0]}`\n",
             },
         },
         {"type": "divider"},
@@ -103,7 +103,7 @@ def main():
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"For more details, please check the <{ ARTIFACT_URL }|full scan result>.",
+                    "text": f"For more details, please check the <{ARTIFACT_URL}|full scan result>.",
                 },
             }
         )
