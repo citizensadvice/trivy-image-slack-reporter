@@ -1,4 +1,4 @@
-from .trivy_image_slack_reporter import main
+from trivy_image_slack_reporter.trivy_image_slack_reporter import main
 
 if __name__ == "__main__":
     main()

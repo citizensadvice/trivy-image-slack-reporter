@@ -10,6 +10,14 @@ The Trivy scan can be done without restrictions on the severity of the vulnerabi
 
 If there are no vulnerabilities found, the script will not send a message to Slack.
 
+## Generating a report
+
+To generate a report, trivy can be invoked with the following command:
+
+```bash
+trivy image --scanners vuln --format json --output report.json --ignore-unfixed <DOCKER IMAGE HERE>
+```
+
 ## Example Slack message
 
 ![Example Slack message](examples/example.png)

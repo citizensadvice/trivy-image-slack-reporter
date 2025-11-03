@@ -4,82 +4,69 @@ This script takes a Trivy scan JSON file and sends the results to a Slack channe
 
 import json
 import os
+from typing import Final
+
 import slack_sdk
 
+from .blocks import Block, Divider, Header, MarkdownSection
 
-def main():
+
+def main() -> None:
     # Optional environment variables
-    SEVERITY = os.environ.get("SEVERITY", "HIGH,CRITICAL").split(",")
-    ARTIFACT_URL = os.environ.get("ARTIFACT_URL", None)
+    severity: Final[list[str]] = os.environ.get("SEVERITY", "HIGH,CRITICAL").split(",")
+    artifact_url = os.environ.get("ARTIFACT_URL", None)
 
     # Required environment variables
     try:
         results = json.load(open(os.environ["RESULTS_FILE"]))
-    except KeyError:
-        raise Exception("RESULTS_FILE environment variable is not set")
-    except FileNotFoundError:
-        raise Exception("RESULTS_FILE environment variable is not set to a valid file")
+    except KeyError as e:
+        raise Exception("RESULTS_FILE environment variable is not set") from e
+    except FileNotFoundError as e:
+        raise Exception("RESULTS_FILE environment variable is not set to a valid file") from e
 
     try:
-        IMAGE_TITLE = os.environ["IMAGE_TITLE"]
-    except KeyError:
-        raise Exception("IMAGE_TITLE environment variable is not set")
+        image_title = os.environ["IMAGE_TITLE"]
+    except KeyError as e:
+        raise Exception("IMAGE_TITLE environment variable is not set") from e
 
     try:
-        SLACK_BOT_TOKEN = os.environ["SLACK_BOT_TOKEN"]
-    except KeyError:
-        raise Exception("SLACK_BOT_TOKEN environment variable is not set")
+        slack_bot_token = os.environ["SLACK_BOT_TOKEN"]
+    except KeyError as e:
+        raise Exception("SLACK_BOT_TOKEN environment variable is not set") from e
 
     try:
-        SLACK_CHANNEL_ID = os.environ["SLACK_CHANNEL_ID"]
-    except KeyError:
-        raise Exception("SLACK_CHANNEL_ID environment variable is not set")
+        slack_channel_id = os.environ["SLACK_CHANNEL_ID"]
+    except KeyError as e:
+        raise Exception("SLACK_CHANNEL_ID environment variable is not set") from e
 
-    TITLE = f"🛡️ {IMAGE_TITLE} Security Scan 🛡️"
+    title = f"🛡️ {image_title} Security Scan 🛡️"
 
-    blocks = [
-        {
-            "type": "header",
-            "text": {
-                "type": "plain_text",
-                "text": TITLE,
-                "emoji": True,
-            },
-        },
-        {"type": "divider"},
-        {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": f"This scan shows {', '.join(SEVERITY)} severity vulnerabilities found in the following image:\n\n`{results['Metadata']['RepoDigests'][0]}`\n",
-            },
-        },
-        {"type": "divider"},
+    blocks: list[Block] = [
+        Header(title),
+        Divider(),
+        MarkdownSection(
+            f"This scan shows {', '.join(severity)} severity vulnerabilities found in the following image:\n\n`{results['Metadata']['RepoDigests'][0]}`\n"
+        ),
+        Divider(),
     ]
 
     # Filter out vulnerabilities that don't match the specified severity levels
     targets = {
         str(result["Target"] + " - " + result["Type"]): [
-            v for v in result["Vulnerabilities"] if v["Severity"] in SEVERITY
+            v for v in result["Vulnerabilities"] if v["Severity"] in severity
         ]
         for result in results["Results"]
         if "Vulnerabilities" in result.keys()
     }
 
+    vulnerabilities_count = 0
+
     for target, vulnerabilities in targets.items():
-        output = str()
+        output = ""
         if vulnerabilities == []:
             # Skip results that don't have vulnerabilities
             continue
-        blocks.append(
-            {
-                "type": "header",
-                "text": {
-                    "type": "plain_text",
-                    "text": target,
-                },
-            }
-        )
+        blocks.append(Header(target))
         for v in vulnerabilities:
             output += f"• *{v['Title']}*\n"
             output += f"   <{v['PrimaryURL']}|{v['VulnerabilityID']}>\n"
@@ -89,63 +76,60 @@ def main():
             output += f"   Fixed Version: {v['FixedVersion']}\n"
             output += "\n"
 
-        blocks.append(
-            {
-                "type": "section",
-                "text": {"type": "mrkdwn", "text": output},
-            }
-        )
-        blocks.append({"type": "divider"})
+            vulnerabilities_count += 1
 
-    if ARTIFACT_URL:
+        blocks.append(MarkdownSection(output))
+        blocks.append(Divider())
+
+    if artifact_url:
         blocks.append(
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": f"For more details, please check the <{ARTIFACT_URL}|full scan result>.",
-                },
-            }
+            MarkdownSection(
+                f"For more details, please check the <{artifact_url}|full scan result>."
+            )
         )
 
     # Truncate sections that are too long
-    for block in blocks:
-        if block["type"] == "section":
-            if len(block["text"]["text"]) >= 3000:
+    for i, block in enumerate(blocks):
+        if isinstance(block, MarkdownSection):
+            if len(block.text) >= 3000:
                 # Split the text into individual vulnerabilities
-                items: list[str] = block["text"]["text"].split("• ")
+                items: list[str] = block.text.split("• ")
 
                 # Remove vulnerabilities until the text is less than 2900 characters
                 while len("• ".join(items)) > 2900:
                     items.pop()
 
                 # Reconstruct the text with the truncated vulnerabilities
-                block["text"]["text"] = (
+                block.text = (
                     "• ".join(items)
-                    + f"*The vulnerabilities in this section are truncated. {'See the full scan result for more details.' if ARTIFACT_URL else ''}*"
+                    + f"*The vulnerabilities in this section are truncated. {'See the full scan result for more details.' if artifact_url else ''}*"
                 )
 
-    print("Message blocks:")
-    print(json.dumps(blocks, indent=2))
+                # Update the blocks list
+                blocks[i] = block
 
-    if len(blocks) <= 5:
+    blocks_dict_list = [b.render() for b in blocks]
+    print("Message blocks:")
+    print(json.dumps(blocks_dict_list, indent=2))
+
+    if not vulnerabilities_count:
         print("No vulnerabilities found. Skipping sending Slack message.")
     elif os.environ.get("DRY_RUN"):
         print("Dry run enabled. Skipping sending Slack message.")
     else:
-        print(f"Sending results to channel {SLACK_CHANNEL_ID}...")
+        print(f"Sending results to channel {slack_channel_id}...")
 
         try:
-            client = slack_sdk.WebClient(token=SLACK_BOT_TOKEN)
+            client = slack_sdk.WebClient(token=slack_bot_token)
             client.chat_postMessage(
-                channel=SLACK_CHANNEL_ID,
-                text=TITLE,
-                blocks=blocks,
+                channel=slack_channel_id,
+                text=title,
+                blocks=blocks_dict_list,
                 unfurl_links=False,
                 unfurl_media=False,
             )
         except Exception as e:
-            raise Exception(f"Error sending results to Slack: {e}")
+            raise Exception(f"Error sending results to Slack: {e}") from e
 
     print("Done.")
 
