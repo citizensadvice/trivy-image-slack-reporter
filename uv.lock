@@ -3,6 +3,11 @@ revision = 3
 requires-python = ">=3.10"
 
 [[package]]
+name = "ca-slack-block-kit"
+version = "0.1.0"
+source = { git = "https://github.com/citizensadvice/ca-slack-block-kit#7d73ec64a3a98463a85a83267d9e1249f46d1f8c" }
+
+[[package]]
 name = "colorama"
 version = "0.4.6"
 source = { registry = "https://pypi.org/simple" }
@@ -175,9 +180,10 @@ wheels = [
 
 [[package]]
 name = "trivy-image-slack-reporter"
-version = "2.1.0"
+version = "3.0.0"
 source = { editable = "." }
 dependencies = [
+    { name = "ca-slack-block-kit" },
     { name = "slack-sdk" },
 ]
 
@@ -190,7 +196,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "slack-sdk", specifier = ">=3.36.0" }]
+requires-dist = [
+    { name = "ca-slack-block-kit", git = "https://github.com/citizensadvice/ca-slack-block-kit" },
+    { name = "slack-sdk", specifier = ">=3.36.0" },
+]
 
 [package.metadata.requires-dev]
 dev = [

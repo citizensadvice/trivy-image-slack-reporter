@@ -7,8 +7,7 @@ import os
 from typing import Final
 
 import slack_sdk
-
-from .blocks import Block, Divider, Header, MarkdownSection
+from ca_slack_block_kit import Block, Divider, Header, MarkdownSection
 
 
 def main() -> None:
