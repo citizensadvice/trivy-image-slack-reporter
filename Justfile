@@ -20,3 +20,7 @@ format *paths:
 [group("Tests")]
 test:
     uv run pytest -v
+
+# Update test snapshots
+update-snapshots:
+    uv run pytest --snapshot-update
