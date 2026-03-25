@@ -44,7 +44,7 @@ def main() -> None:
         Header(title),
         Divider(),
         MarkdownSection(
-            f"This scan shows {', '.join(severity)} severity vulnerabilities found in the following image:\n\n`{results['Metadata']['RepoDigests'][0]}`\n"
+            f"This scan shows {', '.join(severity)} severity vulnerabilities found in the following image:\n\n`{results['ArtifactName']}`\n"
         ),
         Divider(),
     ]
