@@ -18,7 +18,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python@sha256:da5aee29682d12a6649f51c8d6f15b87deb3e6c524b923c41d0cb3304d07c913`\n"
+        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python:3.9`\n"
       }
     },
     {
@@ -74,7 +74,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows CRITICAL severity vulnerabilities found in the following image:\n\n`python@sha256:da5aee29682d12a6649f51c8d6f15b87deb3e6c524b923c41d0cb3304d07c913`\n"
+        "text": "This scan shows CRITICAL severity vulnerabilities found in the following image:\n\n`python:3.9`\n"
       }
     },
     {
@@ -105,7 +105,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python@sha256:da5aee29682d12a6649f51c8d6f15b87deb3e6c524b923c41d0cb3304d07c913`\n"
+        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python:3.9`\n"
       }
     },
     {
@@ -154,7 +154,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`ruby@sha256:1b282c003e9f5fd583aa3695692a4a8a4c4a51aec0ef95b009e9ca949f6f1662`\n"
+        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`ruby:3.4.6`\n"
       }
     },
     {
@@ -221,7 +221,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python@sha256:da5aee29682d12a6649f51c8d6f15b87deb3e6c524b923c41d0cb3304d07c913`\n"
+        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python:3.9`\n"
       }
     },
     {
@@ -270,7 +270,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python@sha256:da5aee29682d12a6649f51c8d6f15b87deb3e6c524b923c41d0cb3304d07c913`\n"
+        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python:3.9`\n"
       }
     },
     {
@@ -319,7 +319,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python@sha256:da5aee29682d12a6649f51c8d6f15b87deb3e6c524b923c41d0cb3304d07c913`\n"
+        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python:3.9`\n"
       }
     },
     {
@@ -368,7 +368,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python@sha256:da5aee29682d12a6649f51c8d6f15b87deb3e6c524b923c41d0cb3304d07c913`\n"
+        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python:3.9`\n"
       }
     },
     {
@@ -417,7 +417,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python@sha256:da5aee29682d12a6649f51c8d6f15b87deb3e6c524b923c41d0cb3304d07c913`\n"
+        "text": "This scan shows HIGH, CRITICAL, MEDIUM severity vulnerabilities found in the following image:\n\n`python:3.9`\n"
       }
     },
     {

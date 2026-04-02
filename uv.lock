@@ -180,7 +180,7 @@ wheels = [
 
 [[package]]
 name = "trivy-image-slack-reporter"
-version = "3.0.0"
+version = "3.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "ca-slack-block-kit" },
